@@ -26,14 +26,14 @@ class _SplashViewBodyState extends State<SplashViewBody> {
         Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            SvgPicture.asset(Assets.imagesPlant),
+            SvgPicture.asset(Assets.resourceImagesPlant),
           ],
         ),
-        SvgPicture.asset(Assets.imagesLogo),
+        SvgPicture.asset(Assets.resourceImagesLogo),
         SvgPicture.asset(
-          Assets.splashBottom,
+          Assets.resourceImagesSplashBottom,
           fit: BoxFit.fill,
-        ),
+        ),  
       ],
     );
   }
