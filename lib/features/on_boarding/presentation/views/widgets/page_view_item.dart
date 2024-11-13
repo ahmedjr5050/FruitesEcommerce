@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frutiesecommerce/core/utils/app_text_styles.dart';
 import 'package:svg_flutter/svg.dart';
 
 class PageViewItems extends StatelessWidget {
@@ -7,10 +8,12 @@ class PageViewItems extends StatelessWidget {
       required this.image,
       required this.backgroundimage,
       required this.title,
-      required this.subtitle});
+      required this.subtitle,
+      required this.isVisible});
   final String image, backgroundimage;
   final Widget title;
   final String subtitle;
+  final bool isVisible;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -31,9 +34,16 @@ class PageViewItems extends StatelessWidget {
                   image,
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.all(16),
-                child: Text('تخط'),
+              Visibility(
+                visible: isVisible,
+                child: Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Text(
+                    'تخط',
+                    style:
+                        TextStyles.regular13.copyWith(color: Color(0XFF949D9E)),
+                  ),
+                ),
               )
             ],
           ),
@@ -42,8 +52,14 @@ class PageViewItems extends StatelessWidget {
         title,
         SizedBox(height: 24),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: Text(subtitle, textAlign: TextAlign.center),
+          padding: const EdgeInsets.symmetric(horizontal: 37),
+          child: Text(
+            subtitle,
+            textAlign: TextAlign.center,
+            style: TextStyles.semiBold13.copyWith(
+              color: Color(0xFF4E5456),
+            ),
+          ),
         ),
       ],
     );
