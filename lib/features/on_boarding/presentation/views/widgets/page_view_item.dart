@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:frutiesecommerce/core/utils/app_images.dart';
 import 'package:svg_flutter/svg.dart';
 
 class PageViewItems extends StatelessWidget {
@@ -22,16 +21,14 @@ class PageViewItems extends StatelessWidget {
           child: Stack(
             children: [
               Positioned.fill(
-                child: SvgPicture.asset(
-                    Assets.resourceImagesPageViewItem1Background,
-                    fit: BoxFit.fill),
+                child: SvgPicture.asset(backgroundimage, fit: BoxFit.fill),
               ),
               Positioned(
                 bottom: 0,
                 left: 0,
                 right: 0,
                 child: SvgPicture.asset(
-                  Assets.resourceImagesPageViewItem1Image,
+                  image,
                 ),
               ),
               Padding(
@@ -44,7 +41,10 @@ class PageViewItems extends StatelessWidget {
         SizedBox(height: 64),
         title,
         SizedBox(height: 24),
-        Text(subtitle, textAlign: TextAlign.center),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: Text(subtitle, textAlign: TextAlign.center),
+        ),
       ],
     );
   }
