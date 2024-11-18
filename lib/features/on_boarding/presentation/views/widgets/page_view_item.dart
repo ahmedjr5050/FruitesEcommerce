@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:frutiesecommerce/constants.dart';
+import 'package:frutiesecommerce/core/services/shared_preferences_sigleton.dart';
 import 'package:frutiesecommerce/core/utils/app_text_styles.dart';
+import 'package:frutiesecommerce/features/login/presentation/view/login.dart';
 import 'package:svg_flutter/svg.dart';
 
 class PageViewItems extends StatelessWidget {
@@ -36,12 +39,19 @@ class PageViewItems extends StatelessWidget {
               ),
               Visibility(
                 visible: isVisible,
-                child: Padding(
-                  padding: const EdgeInsets.all(16),
-                  child: Text(
-                    'تخط',
-                    style:
-                        TextStyles.regular13.copyWith(color: Color(0XFF949D9E)),
+                child: GestureDetector(
+                  onTap: () {
+                    Prefs.setBool(kIsOnBoardingViewSeen, true);
+                    Navigator.of(context)
+                        .pushReplacementNamed(LoginView.routeName);
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Text(
+                      'تخط',
+                      style: TextStyles.regular13
+                          .copyWith(color: Color(0XFF949D9E)),
+                    ),
                   ),
                 ),
               )

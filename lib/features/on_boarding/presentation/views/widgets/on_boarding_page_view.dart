@@ -13,8 +13,7 @@ class OnBoardingPageview extends StatelessWidget {
       controller: pageController,
       children: [
         PageViewItems(
-            isVisible:
-                pageController.hasClients && pageController.page!.round() != 0,
+            isVisible: true,
             image: Assets.resourceImagesPageViewItem1Image,
             backgroundimage: Assets.resourceImagesPageViewItem1Background,
             title: Row(
@@ -39,22 +38,22 @@ class OnBoardingPageview extends StatelessWidget {
             subtitle:
                 'اكتشف تجربة تسوق فريدة مع FruitHUB. استكشف مجموعتنا الواسعة من الفواكه الطازجة الممتازة واحصل على أفضل العروض والجودة العالية.'),
         PageViewItems(
-            isVisible:
-                pageController.hasClients && pageController.page!.round() != 0,
-            image: Assets.resourceImagesPageViewItem2Image,
-            backgroundimage: Assets.resourceImagesPageViewItems2Backgroundimage,
-            title: Text(
-              'ابحث وتسوق',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                  fontSize: 23,
-                  fontWeight: FontWeight.w700,
-                  height: 0,
-                  color: Color(0xFF0C0D0D),
-                  fontFamily: 'Cairo'),
-            ),
-            subtitle:
-                'نقدم لك أفضل الفواكه المختارة بعناية. اطلع على التفاصيل والصور والتقييمات لتتأكد من اختيار الفاكهة المثالية',),
+          isVisible: false,
+          image: Assets.resourceImagesPageViewItem2Image,
+          backgroundimage: Assets.resourceImagesPageViewItems2Backgroundimage,
+          title: Text(
+            'ابحث وتسوق',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+                fontSize: 23,
+                fontWeight: FontWeight.w700,
+                height: 0,
+                color: Color(0xFF0C0D0D),
+                fontFamily: 'Cairo'),
+          ),
+          subtitle:
+              'نقدم لك أفضل الفواكه المختارة بعناية. اطلع على التفاصيل والصور والتقييمات لتتأكد من اختيار الفاكهة المثالية',
+        ),
       ],
     );
   }
