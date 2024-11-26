@@ -5,9 +5,9 @@ import 'package:frutiesecommerce/core/utils/app_images.dart';
 import 'package:frutiesecommerce/core/utils/app_text_styles.dart';
 import 'package:frutiesecommerce/core/widgets/custom_button.dart';
 import 'package:frutiesecommerce/core/widgets/custom_text_field.dart';
-import 'package:frutiesecommerce/features/login/presentation/view/widgets/dont_have_account_widgets.dart';
-import 'package:frutiesecommerce/features/login/presentation/view/widgets/or_divider.dart';
-import 'package:frutiesecommerce/features/login/presentation/view/widgets/social_login_button.dart';
+import 'package:frutiesecommerce/features/auth/presentation/view/widgets/dont_have_account_widgets.dart';
+import 'package:frutiesecommerce/features/auth/presentation/view/widgets/or_divider.dart';
+import 'package:frutiesecommerce/features/auth/presentation/view/widgets/social_login_button.dart';
 
 class LoginViewBody extends StatelessWidget {
   const LoginViewBody({super.key});

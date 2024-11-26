@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:frutiesecommerce/constants.dart';
 import 'package:frutiesecommerce/core/services/shared_preferences_sigleton.dart';
 import 'package:frutiesecommerce/core/utils/app_text_styles.dart';
-import 'package:frutiesecommerce/features/login/presentation/view/login.dart';
+import 'package:frutiesecommerce/features/auth/presentation/view/login.dart';
 import 'package:svg_flutter/svg.dart';
 
 class PageViewItems extends StatelessWidget {

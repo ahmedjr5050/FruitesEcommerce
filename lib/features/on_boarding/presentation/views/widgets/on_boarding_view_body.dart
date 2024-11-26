@@ -4,7 +4,7 @@ import 'package:frutiesecommerce/constants.dart';
 import 'package:frutiesecommerce/core/services/shared_preferences_sigleton.dart';
 import 'package:frutiesecommerce/core/utils/app_colors.dart';
 import 'package:frutiesecommerce/core/widgets/custom_button.dart';
-import 'package:frutiesecommerce/features/login/presentation/view/login.dart';
+import 'package:frutiesecommerce/features/auth/presentation/view/login.dart';
 import 'package:frutiesecommerce/features/on_boarding/presentation/views/widgets/on_boarding_page_view.dart';
 
 class OnBoardingViewBody extends StatefulWidget {
