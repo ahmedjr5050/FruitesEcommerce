@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:frutiesecommerce/core/helper_functions/custom_bloc_observer.dart';
 import 'package:frutiesecommerce/core/helper_functions/on_generate_routes.dart';
 import 'package:frutiesecommerce/core/services/getit_services.dart';
 import 'package:frutiesecommerce/core/services/shared_preferences_sigleton.dart';
@@ -15,6 +17,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  Bloc.observer = CustomBlocObserver();
   await Prefs.init();
   runApp(const FruitHub());
 }

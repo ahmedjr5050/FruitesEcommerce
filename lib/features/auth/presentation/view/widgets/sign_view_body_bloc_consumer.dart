@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:frutiesecommerce/core/helper_functions/build_error_bar.dart';
 import 'package:frutiesecommerce/features/auth/presentation/cubits/signup_cubits/sign_up_cubit.dart';
 import 'package:frutiesecommerce/features/auth/presentation/view/widgets/signup_view_body.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
@@ -17,10 +18,7 @@ class SignUpBlocConsumerBody extends StatelessWidget {
           Navigator.pop(context);
         }
         if (state is SignUpError) {
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: Text(state.message),
-            backgroundColor: Colors.red,
-          ));
+          buildErrorBar(context, state.message);
         }
       },
       builder: (context, state) {
