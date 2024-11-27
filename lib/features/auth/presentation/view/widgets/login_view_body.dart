@@ -1,47 +1,54 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:frutiesecommerce/constants.dart';
 import 'package:frutiesecommerce/core/utils/app_colors.dart';
 import 'package:frutiesecommerce/core/utils/app_images.dart';
 import 'package:frutiesecommerce/core/utils/app_text_styles.dart';
 import 'package:frutiesecommerce/core/widgets/custom_button.dart';
 import 'package:frutiesecommerce/core/widgets/custom_text_field.dart';
+import 'package:frutiesecommerce/core/widgets/password_field.dart';
+import 'package:frutiesecommerce/features/auth/presentation/cubits/sign_in_cubit/sign_in_cubit.dart';
 import 'package:frutiesecommerce/features/auth/presentation/view/widgets/dont_have_account_widgets.dart';
 import 'package:frutiesecommerce/features/auth/presentation/view/widgets/or_divider.dart';
 import 'package:frutiesecommerce/features/auth/presentation/view/widgets/social_login_button.dart';
 
-class LoginViewBody extends StatelessWidget {
-  const LoginViewBody({super.key});
+class SignInViewBody extends StatefulWidget {
+  const SignInViewBody({super.key});
 
   @override
+  State<SignInViewBody> createState() => _SignInViewBodyState();
+}
+
+final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+AutovalidateMode _formAutovalidateMode = AutovalidateMode.disabled;
+late String _email, _password;
+
+class _SignInViewBodyState extends State<SignInViewBody> {
+  @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: kHorizintalPadding,
-        ),
-        child: SingleChildScrollView(
-            child: Column(
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        horizontal: kHorizintalPadding,
+      ),
+      child: SingleChildScrollView(
+          child: Form(
+        key: _formKey,
+        autovalidateMode: _formAutovalidateMode,
+        child: Column(
           children: [
             SizedBox(
               height: 24,
             ),
             CustomTextFormField(
+              onSaved: (value) => _email = value!,
               hintText: 'البريد الإلكتروني',
               textInputType: TextInputType.emailAddress,
             ),
             SizedBox(
               height: 16,
             ),
-            CustomTextFormField(
-              hintText: 'كلمة المرور',
-              textInputType: TextInputType.visiblePassword,
-              suffixIcon: IconButton(
-                icon: Icon(
-                  Icons.remove_red_eye,
-                  color: Color(0xffC9CECF),
-                ),
-                onPressed: () {},
-              ),
+            PasswordField(
+              onSaved: (value) => _password = value!,
             ),
             SizedBox(
               height: 16,
@@ -61,7 +68,19 @@ class LoginViewBody extends StatelessWidget {
               height: 33,
             ),
             CustomButton(
-              onPressed: () {},
+              onPressed: () {
+                if (_formKey.currentState!.validate()) {
+                  _formKey.currentState!.save();
+
+                  context
+                      .read<SignInCubit>()
+                      .signInWithEmailAndPassword(_email, _password);
+                } else {
+                  setState(() {
+                    _formAutovalidateMode = AutovalidateMode.always;
+                  });
+                }
+              },
               text: 'تسجيل الدخول',
             ),
             const SizedBox(
@@ -78,7 +97,10 @@ class LoginViewBody extends StatelessWidget {
             SocialLoginButton(
               title: 'تسجيل بواسطة جوجل',
               images: Assets.resourceImagesGoogleIcon,
-              onPressed: () {},
+              onPressed: () {
+                print('google');
+                context.read<SignInCubit>().signInWithGoogle();
+              },
             ),
             SizedBox(
               height: 16,
@@ -97,8 +119,8 @@ class LoginViewBody extends StatelessWidget {
               onPressed: () {},
             ),
           ],
-        )),
-      ),
+        ),
+      )),
     );
   }
 }

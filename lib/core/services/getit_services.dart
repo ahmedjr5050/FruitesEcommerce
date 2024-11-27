@@ -13,4 +13,5 @@ void setup() {
       AuthRepoImpl(firebaseAuthServices: getIt<FirebaseAuthService>());
   getIt.registerSingleton<AuthRepo>(authRepoImpl);
   getIt.registerSingleton<AuthRepoImpl>(authRepoImpl);
+  
 }

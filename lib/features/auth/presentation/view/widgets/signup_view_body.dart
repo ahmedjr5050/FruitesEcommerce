@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:frutiesecommerce/constants.dart';
+import 'package:frutiesecommerce/core/helper_functions/build_error_bar.dart';
 import 'package:frutiesecommerce/core/widgets/custom_button.dart';
 import 'package:frutiesecommerce/core/widgets/custom_text_field.dart';
 import 'package:frutiesecommerce/core/widgets/password_field.dart';
@@ -17,6 +18,7 @@ class SignUpViewBody extends StatefulWidget {
 
 class _SignUpViewBodyState extends State<SignUpViewBody> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  late bool isTermAccepted = false;
   AutovalidateMode _formAutovalidateMode = AutovalidateMode.disabled;
   late String _email, _password, _name;
   @override
@@ -50,11 +52,18 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
               SizedBox(
                 height: 16,
               ),
-              PasswordField(),
+              PasswordField(
+                onSaved: (value) => _password = value!,
+              ),
               SizedBox(
                 height: 18,
               ),
-              TermAndConditionsWidgets(),
+              TermAndConditionsWidgets(
+                onChanged: (bool value) {
+                  isTermAccepted = value;
+                  setState(() {});
+                },
+              ),
               SizedBox(
                 height: 30,
               ),
@@ -62,10 +71,15 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
                       _formKey.currentState!.save();
-                      context
-                          .read<SignUpCubit>()
-                          .createUserWithEmailAndPassword(
-                              _email, _password, _name);
+                      if (isTermAccepted) {
+                        context
+                            .read<SignUpCubit>()
+                            .createUserWithEmailAndPassword(
+                                _email, _password, _name);
+                      } else {
+                        buildErrorBar(
+                            context, 'يجب الموافقة على الشروط والاحكام');
+                      }
                     } else {
                       setState(() {
                         _formAutovalidateMode = AutovalidateMode.always;

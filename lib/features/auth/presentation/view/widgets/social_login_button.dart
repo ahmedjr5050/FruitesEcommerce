@@ -38,7 +38,7 @@ class SocialLoginButton extends StatelessWidget {
             style: TextStyles.semiBold16,
           ),
         ),
-        onPressed: () {},
+        onPressed: onPressed,
       ),
     );
   }

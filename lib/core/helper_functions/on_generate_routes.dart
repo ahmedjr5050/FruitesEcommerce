@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:frutiesecommerce/features/auth/presentation/view/login.dart';
+import 'package:frutiesecommerce/features/auth/presentation/view/signin.dart';
 import 'package:frutiesecommerce/features/auth/presentation/view/signup.dart';
 import 'package:frutiesecommerce/features/splash/presentation/views/spalsh_view.dart';
 
@@ -11,8 +11,8 @@ Route<dynamic> onGenerateRoutes(RouteSettings settings) {
       return MaterialPageRoute(builder: (_) => const SplashView());
     case OnBoardingView.routeName:
       return MaterialPageRoute(builder: (_) => const OnBoardingView());
-    case LoginView.routeName:
-      return MaterialPageRoute(builder: (_) => const LoginView());
+    case SignInView.routeName:
+      return MaterialPageRoute(builder: (_) => const SignInView());
     case SignUpView.routeName:
       return MaterialPageRoute(builder: (_) => const SignUpView());
     default:

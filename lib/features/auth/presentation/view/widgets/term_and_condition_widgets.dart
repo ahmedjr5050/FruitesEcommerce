@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:frutiesecommerce/constants.dart';
 import 'package:frutiesecommerce/core/utils/app_colors.dart';
 import 'package:frutiesecommerce/core/utils/app_text_styles.dart';
 import 'package:frutiesecommerce/features/auth/presentation/view/widgets/custom_checkbox.dart';
 
 class TermAndConditionsWidgets extends StatefulWidget {
-  const TermAndConditionsWidgets({super.key});
-
+  const TermAndConditionsWidgets({super.key, required this.onChanged});
+final ValueChanged<bool> onChanged ;
   @override
   State<TermAndConditionsWidgets> createState() =>
       _TermAndConditionsWidgetsState();
@@ -21,6 +20,7 @@ class _TermAndConditionsWidgetsState extends State<TermAndConditionsWidgets> {
         CustomCheckBox(
           isChecked: isTermAccepted,
           onChanged: (bool value) {
+            widget.onChanged(value);
             isTermAccepted = value;
             setState(() {});
           },
