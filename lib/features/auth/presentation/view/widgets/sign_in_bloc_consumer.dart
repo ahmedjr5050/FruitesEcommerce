@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:frutiesecommerce/core/helper_functions/build_error_bar.dart';
 import 'package:frutiesecommerce/core/widgets/custom_progress_hub.dart';
 import 'package:frutiesecommerce/features/auth/presentation/cubits/sign_in_cubit/sign_in_cubit.dart';
-import 'package:frutiesecommerce/features/auth/presentation/view/widgets/login_view_body.dart';
+import 'package:frutiesecommerce/features/auth/presentation/view/widgets/signin_view_body.dart';
 
 class SignInBlocConsumer extends StatelessWidget {
   const SignInBlocConsumer({
